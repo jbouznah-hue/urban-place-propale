@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Place - Audit & Proposition | Orrtyl</title>
+<title>Urban Place - Proposition Commerciale | Orrtyl</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
@@ -46,6 +46,11 @@ tailwind.config = {
   .tab-btn:not(.active):hover { color: #334155; }
   .score-ring { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
   .gradient-mesh { background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 25%, #fcfcfd 50%, #fffbeb 75%, #f8fafc 100%); }
+  .funnel-step { position: relative; }
+  .funnel-step:not(:last-child)::after { content: ''; position: absolute; left: 19px; top: 48px; bottom: -16px; width: 2px; background: #e2e8f0; }
+  .status-auto { background: #dcfce7; color: #15803d; }
+  .status-semi { background: #fef3c7; color: #92400e; }
+  .status-manual { background: #fee2e2; color: #991b1b; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
@@ -61,10 +66,10 @@ tailwind.config = {
       <div class="flex items-center gap-4">
         <img src="https://urbanplace.me/wp-content/uploads/2021/06/urban-place-logo-noir.png" alt="Urban Place" class="h-8 sm:h-10 object-contain">
         <div class="hidden sm:block h-6 w-px bg-slate-300"></div>
-        <span class="hidden sm:block text-sm text-slate-500 font-medium">Audit & Proposition</span>
+        <span class="hidden sm:block text-sm text-slate-500 font-medium">Proposition Commerciale</span>
       </div>
       <div class="flex items-center gap-3">
-        <span class="text-xs text-slate-400 hidden md:block">Mai 2026</span>
+        <span class="text-xs text-slate-400 hidden md:block">Juin 2026</span>
         <div class="h-8 px-3 rounded-full bg-slate-900 text-white text-xs font-semibold flex items-center">Orrtyl</div>
       </div>
     </div>
@@ -76,12 +81,14 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex gap-1 overflow-x-auto py-0 -mb-px" id="tabNav">
       <button class="tab-btn active whitespace-nowrap px-4 py-3.5 text-sm" data-tab="etat">Etat des Lieux</button>
-      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="decouverte">Decouverte & Besoins</button>
-      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="erreurs">Erreurs & Ameliorations</button>
+      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="parcours">Parcours de Vente</button>
+      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="audit">Audit des Outils</button>
       <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="ia">IA & Automatisations</button>
       <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="plateforme">Plateforme Sur Mesure</button>
+      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="qna">Questions / Reponses</button>
+      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="financier">Proposition Financiere</button>
       <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="partenariat">Partenariat</button>
-      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="merci">Prochaines Etapes</button>
+      <button class="tab-btn whitespace-nowrap px-4 py-3.5 text-sm" data-tab="planning">Prochaines Etapes</button>
     </div>
   </div>
 </nav>
@@ -462,513 +469,463 @@ tailwind.config = {
 
 </div>
 
-<!-- ==================== ONGLET 2 : DECOUVERTE & BESOINS ==================== -->
-<div id="tab-decouverte" class="tab-content">
+<!-- ==================== ONGLET 2 : PARCOURS DE VENTE ACTUEL ==================== -->
+<div id="tab-parcours" class="tab-content">
 
   <div class="mb-8">
-    <h2 class="text-3xl font-bold text-slate-900 mb-2">Decouverte & Besoins</h2>
-    <p class="text-slate-500">Cliquez sur chaque categorie pour reveler les questions. Environ 45 questions pour bien comprendre votre contexte.</p>
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Parcours de Vente Actuel</h2>
+    <p class="text-slate-500">Votre funnel commercial complet, de l'acquisition du lead jusqu'au paiement. Chaque etape est evaluee selon son niveau d'automatisation.</p>
+    <div class="flex gap-4 mt-4 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 text-xs font-semibold"><span class="w-3 h-3 rounded-full bg-green-500"></span> Automatise</span>
+      <span class="inline-flex items-center gap-1.5 text-xs font-semibold"><span class="w-3 h-3 rounded-full bg-amber-500"></span> Semi-automatise</span>
+      <span class="inline-flex items-center gap-1.5 text-xs font-semibold"><span class="w-3 h-3 rounded-full bg-red-500"></span> Manuel / Friction</span>
+    </div>
   </div>
 
-  <div class="space-y-4" id="accordionContainer">
+  <div class="space-y-6 max-w-4xl">
 
-    <!-- Categorie 1 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">01</div>
-          <div>
-            <h3 class="font-bold text-slate-800 text-lg">Organisation & Equipe</h3>
-            <p class="text-sm text-slate-500">7 questions</p>
-          </div>
+    <!-- Etape 1 -->
+    <div class="funnel-step flex gap-4 anim-in">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm mt-1">1</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Acquisition</h3>
+          <span class="status-semi text-xs font-semibold px-3 py-1 rounded-full">Semi-auto</span>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">1.</span><span>Quelle est la taille de votre equipe operationnelle sur chaque site ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">2.</span><span>Qui gere aujourd'hui la relation commerciale avec les prospects ? (community managers, commercial dedie, direction ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">3.</span><span>Comment se passe le processus de vente quand un prospect vous contacte ? (premier contact &rarr; visite &rarr; signature)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">4.</span><span>Quel est votre taux de conversion actuel entre une demande de visite et une signature ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">5.</span><span>Combien de demandes de renseignements recevez-vous par semaine en moyenne ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">6.</span><span>Qui gere les reseaux sociaux et le contenu du site web ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-indigo-500 font-bold shrink-0">7.</span><span>Y a-t-il des taches repetitives qui prennent beaucoup de temps a votre equipe au quotidien ?</span></div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Canal</p>
+            <p class="text-slate-800 font-medium">Google Ads + Meta Ads</p>
+            <p class="text-slate-500 mt-1">Budget ~13 000 ILS/mois</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Action</p>
+            <p class="text-slate-800 font-medium">Prospect remplit formulaire landing page</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Outil</p>
+            <p class="text-slate-800 font-medium">WordPress + landing pages</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Cout acquisition lead</p>
+            <p class="text-slate-800 font-medium">~290-300 ILS</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Categorie 2 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-sm">02</div>
+    <!-- Etape 2 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d1">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm mt-1">2</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Entree CRM</h3>
+          <span class="status-auto text-xs font-semibold px-3 py-1 rounded-full">Automatise</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 class="font-bold text-slate-800 text-lg">Outils & Back-office</h3>
-            <p class="text-sm text-slate-500">8 questions</p>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Action</p>
+            <p class="text-slate-800 font-medium">Lead entre automatiquement dans Salesforce</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Outil</p>
+            <p class="text-slate-800 font-medium">Salesforce</p>
           </div>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">8.</span><span>Comment utilisez-vous Salesforce aujourd'hui ? (CRM complet, juste contacts, pipeline ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">9.</span><span>Salesforce est-il synchronise avec OfficeRnD ? Si oui, quelles donnees transitent ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">10.</span><span>Pourquoi avez-vous choisi OfficeRnD ? Etes-vous satisfaits de la plateforme ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">11.</span><span>Quelles fonctionnalites d'OfficeRnD n'utilisez-vous pas encore mais aimeriez activer ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">12.</span><span>Flexspace gere vos reservations en ligne : etes-vous satisfaits ? Quelles limites rencontrez-vous ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">13.</span><span>Comment gerez-vous la facturation ? (OfficeRnD, Salesforce, autre outil ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">14.</span><span>Utilisez-vous un outil d'emailing / newsletter ? Si oui, lequel ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-violet-500 font-bold shrink-0">15.</span><span>Comment gerez-vous les acces physiques aux espaces ? (badges, codes, app ?)</span></div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Pas d'enrichissement automatique du lead
         </div>
       </div>
     </div>
 
-    <!-- Categorie 3 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">03</div>
+    <!-- Etape 3 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d1">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-sm mt-1">3</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Qualification</h3>
+          <span class="status-manual text-xs font-semibold px-3 py-1 rounded-full">Manuel</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 class="font-bold text-slate-800 text-lg">Commercial & Acquisition</h3>
-            <p class="text-sm text-slate-500">8 questions</p>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Action</p>
+            <p class="text-slate-800 font-medium">Verification zone geographique (Tel Aviv, Jerusalem, Kiryat Ono)</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Resultat</p>
+            <p class="text-slate-800 font-medium">Lead qualifie passe en "Opportunite"</p>
           </div>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">16.</span><span>D'ou viennent vos prospects aujourd'hui ? (Google, bouche a oreille, reseaux sociaux, agents immobiliers ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">17.</span><span>Quel est votre canal d'acquisition le plus performant ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">18.</span><span>Investissez-vous en publicite digitale ? (Google Ads, Meta Ads, LinkedIn Ads ?) Si oui, quel budget ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">19.</span><span>Comment gerez-vous les relances des prospects qui n'ont pas donne suite apres une visite ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">20.</span><span>Avez-vous un processus de nurturing automatise pour les leads ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">21.</span><span>Quel est votre taux d'occupation actuel par location ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">22.</span><span>Y a-t-il une saisonnalite dans vos ventes ? (periodes creuses, pics ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-emerald-500 font-bold shrink-0">23.</span><span>Quel est le panier moyen par client / type d'offre ?</span></div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Processus entierement manuel
         </div>
       </div>
     </div>
 
-    <!-- Categorie 4 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">04</div>
+    <!-- Etape 4 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d2">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-sm mt-1">4</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Prise de RDV</h3>
+          <span class="status-manual text-xs font-semibold px-3 py-1 rounded-full">Manuel</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 class="font-bold text-slate-800 text-lg">Membres & Retention</h3>
-            <p class="text-sm text-slate-500">7 questions</p>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Action</p>
+            <p class="text-slate-800 font-medium">Appel sortant par le commercial</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Outil</p>
+            <p class="text-slate-800 font-medium">Salesforce (taches de rappel)</p>
           </div>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">24.</span><span>Quel est votre taux de retention / churn moyen ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">25.</span><span>Comment mesurez-vous la satisfaction de vos membres ? (NPS, enquetes, feedback informel ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">26.</span><span>Le programme de parrainage (25% cashback) fonctionne-t-il bien ? Combien de parrainages par mois ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">27.</span><span>Les Happy Hours du jeudi : quel taux de participation ? Comment les promouvez-vous ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">28.</span><span>Avez-vous une strategie d'upsell ? (desk vers bureau, petit bureau vers plus grand, ajout de services ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">29.</span><span>Comment communiquez-vous avec vos membres au quotidien ? (email, WhatsApp, app, physique ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-amber-500 font-bold shrink-0">30.</span><span>Y a-t-il des services supplementaires que vos membres demandent et que vous ne proposez pas encore ?</span></div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Uniquement en heures de bureau, pas d'IA
         </div>
       </div>
     </div>
 
-    <!-- Categorie 5 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm">05</div>
+    <!-- Etape 5 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d2">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm mt-1">5</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Visite physique (Siour)</h3>
+          <span class="status-semi text-xs font-semibold px-3 py-1 rounded-full">Semi-auto</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 class="font-bold text-slate-800 text-lg">Communication & Marketing</h3>
-            <p class="text-sm text-slate-500">8 questions</p>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Action</p>
+            <p class="text-slate-800 font-medium">Commercial fait visiter avec tablette</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Moment cle</p>
+            <p class="text-slate-800 font-medium italic">"60-70% du travail est fait quand il vient"</p>
           </div>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">31.</span><span>Qui produit vos contenus actuellement ? (photos, videos, articles de blog, posts sociaux)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">32.</span><span>Avez-vous une strategie de contenu documentee ou c'est plutot au fil de l'eau ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">33.</span><span>Pourquoi la page LinkedIn semble-t-elle inactive ou supprimee ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">34.</span><span>Utilisez-vous WhatsApp Business ou un WhatsApp standard ? Y a-t-il des reponses automatiques configurees ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">35.</span><span>Le chatbot Chatbase : qui l'a configure ? Etes-vous satisfaits de ses performances ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">36.</span><span>Repondez-vous aux avis Google ? Avez-vous une strategie de sollicitation d'avis ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">37.</span><span>Avez-vous deja travaille avec des influenceurs ou des partenaires locaux ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-rose-500 font-bold shrink-0">38.</span><span>Quel est le profil type de votre client ideal ? (taille entreprise, secteur, budget)</span></div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Pas de resume structure de la visite
         </div>
       </div>
     </div>
 
-    <!-- Categorie 6 -->
-    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover">
-      <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleAccordion(this)">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold text-sm">06</div>
-          <div>
-            <h3 class="font-bold text-slate-800 text-lg">Vision & Priorites</h3>
-            <p class="text-sm text-slate-500">7 questions</p>
-          </div>
+    <!-- Etape 6 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d3">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-sm mt-1">6</div>
+      <div class="flex-1 bg-white rounded-2xl border border-red-100 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Les 3-4 jours critiques</h3>
+          <span class="status-manual text-xs font-semibold px-3 py-1 rounded-full">Manuel</span>
         </div>
-        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div class="accordion-body px-6">
-        <div class="pb-6 space-y-3 border-t border-slate-100 pt-4">
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">39.</span><span>Quels sont vos objectifs business pour 2026-2027 ? (croissance, nouvelles locations, nouveaux services ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">40.</span><span>Y a-t-il des projets d'ouverture de nouveaux sites ? (le Rishon Letzion dans le formulaire ?)</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">41.</span><span>Quel est votre plus gros point de douleur operationnel aujourd'hui ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">42.</span><span>Si vous pouviez automatiser UNE chose dans votre business, ce serait quoi ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">43.</span><span>Avez-vous un budget defini pour la transformation digitale / marketing ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">44.</span><span>Qu'attendez-vous de nous concretement ? Quel serait le resultat ideal de notre collaboration ?</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors"><span class="text-cyan-500 font-bold shrink-0">45.</span><span>Y a-t-il des contraintes ou des deadlines dont on devrait tenir compte ?</span></div>
+        <div class="text-sm text-slate-700 space-y-2">
+          <p>Le prospect visite aussi les <strong>concurrents</strong>.</p>
+          <p>Besoin d'etre <strong>ultra-reactif</strong> pendant cette fenetre.</p>
+        </div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Suivi manuel, commercial deborde
         </div>
       </div>
     </div>
 
+    <!-- Etape 7 -->
+    <div class="funnel-step flex gap-4 anim-in anim-d3">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm mt-1">7</div>
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Jour d'essai</h3>
+          <span class="status-semi text-xs font-semibold px-3 py-1 rounded-full">Semi-auto</span>
+        </div>
+        <div class="text-sm text-slate-700 space-y-2">
+          <p>Propose apres la visite. Le prospect bloque sa journee.</p>
+        </div>
+        <div class="mt-3 bg-red-50 rounded-lg p-3 text-xs text-red-800">
+          <span class="font-semibold">Point de friction :</span> Booking pas entierement autonome
+        </div>
+      </div>
+    </div>
+
+    <!-- Etape 8 -->
+    <div class="flex gap-4 anim-in anim-d4">
+      <div class="shrink-0 w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm mt-1">8</div>
+      <div class="flex-1 bg-white rounded-2xl border border-green-200 p-6 card-hover">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-bold text-slate-900">Contrat & Paiement</h3>
+          <span class="status-auto text-xs font-semibold px-3 py-1 rounded-full">Automatise</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Conversion</p>
+            <p class="text-slate-800 font-medium">50% des visiteurs recoivent un contrat</p>
+          </div>
+          <div>
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Process</p>
+            <p class="text-slate-800 font-medium">Contrat pre-rempli, signe, CB via Stripe</p>
+          </div>
+          <div class="sm:col-span-2">
+            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Facturation</p>
+            <p class="text-slate-800 font-medium">Via Priority (semi-auto, Mary gere ~300 paiements/mois)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Resume funnel -->
+  <div class="mt-10 bg-slate-50 rounded-2xl border border-slate-200 p-6">
+    <h4 class="font-bold text-slate-800 mb-4">Resume du funnel</h4>
+    <div class="grid grid-cols-3 gap-4 text-center">
+      <div>
+        <p class="text-3xl font-bold text-green-600">2</p>
+        <p class="text-sm text-slate-500">Etapes automatisees</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-amber-600">3</p>
+        <p class="text-sm text-slate-500">Semi-automatisees</p>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-red-600">3</p>
+        <p class="text-sm text-slate-500">Manuelles / friction</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ==================== ONGLET 3 : ERREURS & AMELIORATIONS ==================== -->
-<div id="tab-erreurs" class="tab-content">
+<!-- ==================== ONGLET 3 : AUDIT DES OUTILS ==================== -->
+<div id="tab-audit" class="tab-content">
 
   <div class="mb-8">
-    <h2 class="text-3xl font-bold text-slate-900 mb-2">Erreurs & Ameliorations</h2>
-    <p class="text-slate-500">39 points identifies, classes par impact. Chaque carte propose un probleme et sa solution.</p>
-    <div class="flex gap-3 mt-4">
-      <span class="tag tag-qw">Quick Win</span>
-      <span class="text-sm text-slate-500">= Realisable en quelques heures/jours</span>
-      <span class="tag tag-ch ml-4">Chantier</span>
-      <span class="text-sm text-slate-500">= Projet a planifier</span>
-    </div>
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Audit des Outils</h2>
+    <p class="text-slate-500">Analyse detaillee de chaque outil utilise actuellement par Urban Place, avec nos propositions d'amelioration.</p>
   </div>
 
-  <!-- Bloc 1 : Erreurs Critiques -->
-  <section class="mb-10">
-    <div class="flex items-center gap-3 mb-5">
-      <div class="w-3 h-3 rounded-full bg-red-500"></div>
-      <h3 class="text-xl font-bold text-red-800">Erreurs Critiques</h3>
-      <span class="text-sm text-red-500 font-medium">Impact business direct</span>
-    </div>
-    <div class="grid md:grid-cols-2 gap-4">
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.1</span>
-          <span class="tag tag-qw">Quick Win</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Formulaire de contact potentiellement casse</h4>
-        <p class="text-xs text-slate-500 mb-3">Pas de champs nom/email/telephone visibles sur le formulaire "Book a Tour"</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Audit technique immediat + correction des champs manquants
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.2</span>
-          <span class="tag tag-qw">Quick Win</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Contenu identique Dedicated Desk et Day Pass</h4>
-        <p class="text-xs text-slate-500 mb-3">Les deux pages ont le MEME contenu mot pour mot, zero differenciation</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Reecriture complete avec differenciation claire des offres
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.3</span>
-          <span class="tag tag-qw">Quick Win</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">"Rishon Letzion" dans le formulaire</h4>
-        <p class="text-xs text-slate-500 mb-3">Location presente dans le dropdown mais aucune page correspondante sur le site</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Retirer du formulaire ou creer la page si le site existe/est prevu
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.4</span>
-          <span class="tag tag-ch">Chantier</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">LinkedIn inexistant</h4>
-        <p class="text-xs text-slate-500 mb-3">Zero presence B2B alors que la cible inclut startups, avocats, corporates</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Creation et animation de la Company Page LinkedIn
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.5</span>
-          <span class="tag tag-qw">Quick Win</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Google Maps incomplet</h4>
-        <p class="text-xs text-slate-500 mb-3">Rothschild 0 avis + Acro Campus Ono pas de fiche du tout</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Creation fiche manquante + campagne de sollicitation d'avis
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-red-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-red-500">N.6</span>
-          <span class="tag tag-ch">Chantier</span>
-        </div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Chatbot en hebreu uniquement</h4>
-        <p class="text-xs text-slate-500 mb-3">Le site est en anglais par defaut et cible des internationaux/digital nomads</p>
-        <div class="bg-green-50 rounded-lg p-3 text-xs text-green-800">
-          <span class="font-semibold">Solution :</span> Remplacement par un chatbot multilingue intelligent
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="space-y-6">
 
-  <!-- Bloc 2 : Erreurs Techniques & Contenu -->
-  <section class="mb-10">
-    <div class="flex items-center gap-3 mb-5">
-      <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-      <h3 class="text-xl font-bold text-amber-800">Erreurs Techniques & Contenu</h3>
-    </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.7</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Copyright 2020</h4>
-        <p class="text-xs text-slate-500 mb-2">Date de copyright obsolete dans le footer</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Mise a jour vers 2026</div>
+    <!-- Salesforce -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in">
+      <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">S</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Salesforce</h3>
+            <p class="text-blue-100 text-sm">CRM & Pipeline Commercial</p>
+          </div>
+          <div class="ml-auto bg-white/20 rounded-lg px-3 py-1 text-white text-xs font-semibold">~2 500 ILS/mois</div>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.8</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Typo "we specialize in create spaces"</h4>
-        <p class="text-xs text-slate-500 mb-2">Erreur grammaticale visible</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Corriger en "creating spaces"</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.9</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Typo "24-hourr access"</h4>
-        <p class="text-xs text-slate-500 mb-2">Double "r" dans "hour"</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Corriger en "24-hour"</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.10</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">CTA "bOOK A TOUR" casse incorrecte</h4>
-        <p class="text-xs text-slate-500 mb-2">Majuscules/minuscules incoherentes sur la page Rothschild</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Correction de la casse</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.11</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">80% de contenu duplique</h4>
-        <p class="text-xs text-slate-500 mb-2">Blocs "Other Offers" copies a l'identique entre les pages</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Suppression + liens contextuels uniques</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.12</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Images nommees "089A8988-Edit 2"</h4>
-        <p class="text-xs text-slate-500 mb-2">Noms de fichiers cameras + alt text manquants</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Renommage SEO-friendly + ajout alt text</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.13</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">URL /event-space/ pour "Meeting Rooms"</h4>
-        <p class="text-xs text-slate-500 mb-2">Incoherence entre le label du menu et le slug de la page</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Harmonisation slug ou label</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.14</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Site en HTTP sur Facebook</h4>
-        <p class="text-xs text-slate-500 mb-2">Le lien du site sur la page Facebook pointe en HTTP au lieu de HTTPS</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Corriger en HTTPS</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.15</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">2 formulaires sur la meme page</h4>
-        <p class="text-xs text-slate-500 mb-2">Avec des listes de locations differentes, creant de la confusion</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Unifier en un seul formulaire</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.16</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Options formulaire combinees</h4>
-        <p class="text-xs text-slate-500 mb-2">"Office / Meeting room - Daily Pass" = un seul choix bizarre</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Separer en 5 options claires</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.17</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Blog absent du menu principal</h4>
-        <p class="text-xs text-slate-500 mb-2">21 articles accessibles uniquement via le footer</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Ajout du blog au menu principal</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.18</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Videos YouTube non integrees</h4>
-        <p class="text-xs text-slate-500 mb-2">51 videos sur YouTube, zero sur le site web</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Embed des meilleures videos sur les pages correspondantes</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.19</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Handle YouTube @urbanplace4407</h4>
-        <p class="text-xs text-slate-500 mb-2">Handle auto-genere au lieu d'un handle professionnel</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Changer en @urbanplace</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-amber-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-amber-500">N.20</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Categorie Instagram incorrecte</h4>
-        <p class="text-xs text-slate-500 mb-2">"Organisme communautaire" au lieu de "Espace de coworking"</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Modifier la categorie en "Espace de coworking"</div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Ce qu'il fait</p>
+            <p class="text-sm text-slate-700">Gestion leads, pipeline, taches commerciales</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Limites</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas de sync OfficeRnD</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas d'analyse des appels</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas de lead scoring IA</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Soit optimiser Salesforce, soit remplacer par CRM integre a la plateforme</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Bloc 3 : Problemes Juridiques & Legaux -->
-  <section class="mb-10">
-    <div class="flex items-center gap-3 mb-5">
-      <div class="w-3 h-3 rounded-full bg-purple-500"></div>
-      <h3 class="text-xl font-bold text-purple-800">Problemes Juridiques & Legaux</h3>
-    </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.21</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">2 emails differents dans les pages legales</h4>
-        <p class="text-xs text-slate-500 mb-2">marina@ dans Terms, reuven@ dans Privacy Policy</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Harmoniser avec un seul email de contact legal</div>
+    <!-- OfficeRnD -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d1">
+      <div class="bg-gradient-to-r from-emerald-500 to-green-600 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">O</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">OfficeRnD / FlexPlace</h3>
+            <p class="text-emerald-100 text-sm">Gestion des espaces</p>
+          </div>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.22</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Terms sans date de mise a jour</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de date de derniere mise a jour sur les Terms and Conditions</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Ajouter la date de derniere mise a jour</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.23</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Contact DPO incoherent</h4>
-        <p class="text-xs text-slate-500 mb-2">Privacy Policy: Contact = reuven@ alors que partout ailleurs c'est marina@</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Clarifier qui est le DPO et harmoniser</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.24</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Consentement marketing sans champs visibles</h4>
-        <p class="text-xs text-slate-500 mb-2">Formulaire de consentement mais pas de champs de contact visibles</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Verification technique du formulaire (conformite)</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.25</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Non-conformite WCAG 2.1 AA</h4>
-        <p class="text-xs text-slate-500 mb-2">Alt text manquants alors que le site annonce une conformite accessibilite</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Audit accessibilite complet + remediation</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-purple-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-purple-500">N.26</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Dropdown formulaire mal formate</h4>
-        <p class="text-xs text-slate-500 mb-2">"JLMTLV - M.ShalomTLV" concatene sans espaces</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Correction du formatage des options</div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Ce qu'il fait</p>
+            <p class="text-sm text-slate-700">Portail membre, reservations salles, facturation membres. API ouverte, 50+ integrations natives.</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Limites</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Community desactivee</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Directory desactivee</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Visitors desactivee</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Deliveries desactivee</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Passes desactivee</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Activer les fonctionnalites, connecter au CRM, WhatsApp IA</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Bloc 4 : Ameliorations Strategiques -->
-  <section class="mb-10">
-    <div class="flex items-center gap-3 mb-5">
-      <div class="w-3 h-3 rounded-full bg-blue-500"></div>
-      <h3 class="text-xl font-bold text-blue-800">Ameliorations Strategiques</h3>
-    </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.27</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Creer une page "Pricing"</h4>
-        <p class="text-xs text-slate-500 mb-2">Aucun prix affiche nulle part, les prospects doivent deviner</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Page Pricing avec fourchettes de prix par offre</div>
+    <!-- Priority Software -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d2">
+      <div class="bg-gradient-to-r from-amber-500 to-orange-500 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">P</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Priority Software</h3>
+            <p class="text-amber-100 text-sm">ERP / Comptabilite</p>
+          </div>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.28</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Creer une page "About Us"</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de page dediee a l'equipe, aux valeurs, a l'histoire</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Page About Us complete (equipe, valeurs, histoire)</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.29</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Tableau comparatif des offres</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de moyen simple de comparer Private Office vs Desk vs Day Pass</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Tableau comparatif clair avec features et prix</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.30</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Menu principal incomplet</h4>
-        <p class="text-xs text-slate-500 mb-2">Dedicated Desk et Day Pass absents de la navigation</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Ajouter ces offres dans le menu principal</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.31</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Avis Google sur le site</h4>
-        <p class="text-xs text-slate-500 mb-2">Les 171 avis ne sont pas visibles sur le site web</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Widget d'avis Google en temps reel sur les pages</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.32</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Case studies clients</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de temoignages approfondis, surtout pour les Corporate Solutions</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Creer 2-3 case studies detaillees avec metriques</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.33</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Virtual tours video</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de visite virtuelle alors que le contenu video existe sur YouTube</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Creer des virtual tours immersifs par location</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.34</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Incoherences cross-platform</h4>
-        <p class="text-xs text-slate-500 mb-2">Telephone, email, categorie, slogan differents selon les plateformes</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Harmoniser toutes les informations sur toutes les plateformes</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.35</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Section Presse obsolete</h4>
-        <p class="text-xs text-slate-500 mb-2">Rien depuis juin 2021 - donne une image d'abandon</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Mettre a jour ou archiver la section</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.36</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">CTA flottant mobile manquant</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de bouton "Book a Tour" flottant sur mobile</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Ajouter un CTA flottant sticky sur mobile</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.37</span><span class="tag tag-qw">Quick Win</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Images non optimisees</h4>
-        <p class="text-xs text-slate-500 mb-2">Pas de lazy loading ni de compression WebP</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Lazy loading + conversion WebP des images</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.38</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Redirect Flexspace brutal</h4>
-        <p class="text-xs text-slate-500 mb-2">Le booking redirige vers Flexspace sans transition de branding</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Page de transition ou iframe brandee</div>
-      </div>
-      <div class="bg-white rounded-2xl border border-blue-100 p-5 card-hover">
-        <div class="flex items-center justify-between mb-3"><span class="text-xs font-bold text-blue-500">N.39</span><span class="tag tag-ch">Chantier</span></div>
-        <h4 class="font-semibold text-slate-800 text-sm mb-2">Blog sans structure SEO</h4>
-        <p class="text-xs text-slate-500 mb-2">21 articles sans categories ni structure thematique</p>
-        <div class="bg-green-50 rounded-lg p-2.5 text-xs text-green-800"><span class="font-semibold">Solution :</span> Structurer le blog avec des categories SEO</div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Ce qu'il fait</p>
+            <p class="text-sm text-slate-700">ERP complet, facturation, comptabilite, conformite israelienne. API REST OData, tout le modele de donnees est requetable.</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Limites</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas de connexion auto avec OfficeRnD</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Facturation semi-manuelle</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Automatiser le flux OfficeRnD vers Priority, connecter iCount/Sumit</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Resume -->
-  <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div>
-        <p class="text-3xl font-bold text-slate-900">39</p>
-        <p class="text-sm text-slate-500">Points identifies</p>
+    <!-- WordPress -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d2">
+      <div class="bg-gradient-to-r from-violet-500 to-purple-600 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">W</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">WordPress + WPML</h3>
+            <p class="text-violet-100 text-sm">Site web</p>
+          </div>
+          <div class="ml-auto score-ring bg-amber-100 text-amber-700 border-2 border-amber-300 w-12 h-12 text-sm">5.5</div>
+        </div>
       </div>
-      <div>
-        <p class="text-3xl font-bold text-green-600">25</p>
-        <p class="text-sm text-slate-500">Quick Wins</p>
-      </div>
-      <div>
-        <p class="text-3xl font-bold text-blue-600">14</p>
-        <p class="text-sm text-slate-500">Chantiers</p>
-      </div>
-      <div>
-        <p class="text-3xl font-bold text-red-600">6</p>
-        <p class="text-sm text-slate-500">Critiques</p>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Score UX actuel</p>
+            <p class="text-sm text-slate-700 font-bold text-amber-600">5.5 / 10</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Problemes</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Contenu duplique</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas de prix affiches</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Formulaires sous-optimises</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Refonte complete ou plateforme integree</p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- ChatBase -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d3">
+      <div class="bg-gradient-to-r from-slate-600 to-slate-700 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">C</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">ChatBase</h3>
+            <p class="text-slate-300 text-sm">Chatbot</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Limites</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Hebreu uniquement</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>Pas connecte au CRM</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>"Ramene du vide"</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Chatbot IA nouvelle generation multilingue connecte</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stripe -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d3">
+      <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">$</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Stripe</h3>
+            <p class="text-indigo-100 text-sm">Paiements</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Statut</p>
+            <p class="text-sm text-slate-700">Fonctionne bien mais pas integre au flux comptable</p>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Integration automatique Stripe vers Priority</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agence Social Media -->
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover anim-in anim-d4">
+      <div class="bg-gradient-to-r from-pink-500 to-rose-500 p-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white font-bold text-lg">SM</div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Agence Social Media</h3>
+            <p class="text-pink-100 text-sm">Externe</p>
+          </div>
+          <div class="ml-auto bg-white/20 rounded-lg px-3 py-1 text-white text-xs font-semibold">~5 000 ILS/mois</div>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Ce qu'elle fait</p>
+            <p class="text-sm text-slate-700">Ne gere QUE les campagnes pub, pas les reseaux sociaux eux-memes</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wide font-semibold mb-2">Resultats actuels</p>
+            <ul class="text-sm text-slate-700 space-y-1">
+              <li class="flex gap-1.5"><span class="text-amber-500 shrink-0">&#9888;</span>Instagram : 3 194 followers (faible)</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>YouTube : 25 abonnes</li>
+              <li class="flex gap-1.5"><span class="text-red-500 shrink-0">&#10005;</span>LinkedIn : INEXISTANT</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-500 uppercase tracking-wide font-semibold mb-2">Notre proposition</p>
+            <p class="text-sm text-slate-700">Automatisation contenu + integrer dans le Lab</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-
 </div>
 
 <!-- ==================== ONGLET 4 : IA & AUTOMATISATIONS ==================== -->
@@ -1070,9 +1027,9 @@ tailwind.config = {
           <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Facturation automatique depuis OfficeRnD</strong> — Chaque reservation (bureau, salle, day pass) genere automatiquement sa facture dans votre logiciel comptable. Zero double saisie.</span></div>
           <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Rapprochement bancaire intelligent</strong> — L'IA matche automatiquement les paiements recus avec les factures emises. Ecarts et anomalies signales en temps reel.</span></div>
           <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Conformite israelienne integree</strong> — Export M2Ecom automatique pour l'administration fiscale, gestion TVA multi-taux (MA'AM), connexion Pinkas Invoices (PI).</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Relances impayes automatiques</strong> — Scenario intelligent : email J+3 → WhatsApp J+7 → appel IA J+14. Le bon message, au bon moment, sur le bon canal.</span></div>
+          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Relances impayes automatiques</strong> — Scenario intelligent : email J+3 &rarr; WhatsApp J+7 &rarr; appel IA J+14. Le bon message, au bon moment, sur le bon canal.</span></div>
           <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Tableau de bord financier temps reel</strong> — Revenus par site, par offre, par periode. Vision consolidee multi-espaces avec previsions de tresorerie.</span></div>
-          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Connexion CRM → Comptabilite</strong> — Quand un deal est signe dans Salesforce, la facture se cree, le paiement se suit, l'ecriture se passe — automatiquement.</span></div>
+          <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>Connexion CRM &rarr; Comptabilite</strong> — Quand un deal est signe dans Salesforce, la facture se cree, le paiement se suit, l'ecriture se passe — automatiquement.</span></div>
           <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50"><span class="text-amber-600 shrink-0 mt-0.5 font-bold">&#10003;</span><span><strong>OCR documents fournisseurs</strong> — Scan automatique des factures et recus. Extraction, categorisation et integration dans la comptabilite sans saisie manuelle.</span></div>
         </div>
         <div class="mt-5 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-4 border border-amber-200">
@@ -1255,7 +1212,7 @@ tailwind.config = {
 
 </div>
 
-<!-- ==================== ONGLET 6 : PLATEFORME SUR MESURE ==================== -->
+<!-- ==================== ONGLET 5 : PLATEFORME SUR MESURE ==================== -->
 <div id="tab-plateforme" class="tab-content">
 
   <!-- HERO -->
@@ -1410,13 +1367,11 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Module 3 -->
+      <!-- Remaining modules kept short for brevity - same as original -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-violet-100 text-violet-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-violet-100 text-violet-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg></div>
             <div><span class="font-semibold text-slate-900">Site Vitrine & Blog</span><span class="block text-xs text-slate-400">Remplace WordPress + WPML</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1424,26 +1379,20 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Site moderne, performant, SEO-optimise (pas de WordPress lourd)</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Multilingue natif (EN, HE, FR, RU) sans plugin</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Blog integre avec categories SEO et generation IA</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Pages dynamiques par location avec dispos en temps reel</li>
+              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Site moderne, performant, SEO-optimise</li>
+              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Multilingue natif (EN, HE, FR, RU)</li>
+              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Blog integre avec categories SEO</li>
               <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Formulaires intelligents connectes au CRM</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Page pricing dynamique</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Virtual tours video integres</li>
-              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Accessibilite WCAG 2.1 AA native (sans widget externe)</li>
+              <li class="flex gap-2"><span class="text-violet-500">&#8226;</span>Accessibilite WCAG 2.1 AA native</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 4 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
             <div><span class="font-semibold text-slate-900">WhatsApp IA & Chatbot Site</span><span class="block text-xs text-slate-400">Remplace Chatbase + WhatsApp basique</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1451,26 +1400,19 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Agent WhatsApp IA 24/7 multilingue (EN/HE/FR)</li>
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Transcription et analyse des notes vocales</li>
+              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Agent WhatsApp IA 24/7 multilingue</li>
               <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Chatbot site web custom aux couleurs Urban Place</li>
               <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Qualification automatique des leads</li>
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Tarifs et disponibilites en temps reel dans les reponses</li>
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Prise de RDV et reservation directe depuis la conversation</li>
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Handoff intelligent vers un humain</li>
-              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Synchronisation automatique avec le CRM</li>
+              <li class="flex gap-2"><span class="text-green-500">&#8226;</span>Prise de RDV et reservation directe</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 5 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg></div>
             <div><span class="font-semibold text-slate-900">Facturation & Comptabilite</span><span class="block text-xs text-slate-400">Remplace Stripe standalone + comptabilite externe</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1478,26 +1420,19 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Facturation automatique (contrats recurrents, day pass, salles)</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Paiements en ligne integres (carte, virement, prelevement)</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Connexion directe avec la comptabilite officielle et la PI israelienne</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Export M2Ecom pour la conformite comptable locale</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Gestion TVA multi-taux automatisee</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Rapports financiers par site, par offre, par periode</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Relances impayees automatiques</li>
-              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Tableau de bord revenus en temps reel</li>
+              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Facturation automatique</li>
+              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Paiements en ligne integres</li>
+              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Connexion directe comptabilite israelienne</li>
+              <li class="flex gap-2"><span class="text-amber-500">&#8226;</span>Export M2Ecom, gestion TVA multi-taux</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 6 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
             <div><span class="font-semibold text-slate-900">Portail Membre & App Mobile</span><span class="block text-xs text-slate-400">Remplace le portail OfficeRnD limite</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1507,25 +1442,17 @@ tailwind.config = {
             <ul class="space-y-2 text-sm text-slate-600">
               <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>App mobile brandee Urban Place (iOS + Android)</li>
               <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Dashboard membre personnalise</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Reservation de salles et desks en 2 clics</li>
               <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Annuaire des membres avec networking</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Feed communautaire et evenements</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Notifications push (Happy Hours, events, offres)</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Programme de parrainage integre</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Gestion des visiteurs et livraisons</li>
-              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Tickets support avec suivi</li>
+              <li class="flex gap-2"><span class="text-rose-500">&#8226;</span>Notifications push et programme de parrainage</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 7 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 0v14m7-10V2m0 6a2 2 0 100 4m0-4a2 2 0 110 4m0 0v8m7-14V2m0 10a2 2 0 100 4m0-4a2 2 0 110 4m0 0v4"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 0v14m7-10V2m0 6a2 2 0 100 4m0-4a2 2 0 110 4m0 0v8m7-14V2m0 10a2 2 0 100 4m0-4a2 2 0 110 4m0 0v4"/></svg></div>
             <div><span class="font-semibold text-slate-900">Social Media Manager</span><span class="block text-xs text-slate-400">Nouveau module</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1533,24 +1460,18 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Planification et publication multi-plateforme (FB, IG, LinkedIn, YouTube)</li>
-              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Generation de posts par IA a partir des photos et events</li>
-              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Calendrier editorial auto-alimente</li>
-              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Reponses automatiques aux avis Google</li>
+              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Planification multi-plateforme (FB, IG, LinkedIn, YouTube)</li>
+              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Generation de posts par IA</li>
               <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Analytics cross-platform centralises</li>
-              <li class="flex gap-2"><span class="text-sky-500">&#8226;</span>Gestion de la e-reputation</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 8 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
             <div><span class="font-semibold text-slate-900">Email & SMS Marketing</span><span class="block text-xs text-slate-400">Nouveau module</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1558,24 +1479,18 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Sequences automatisees (bienvenue, onboarding, reactivation, parrainage)</li>
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Newsletter automatique aux membres et prospects</li>
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Rappels Happy Hour et evenements</li>
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Campagnes saisonnieres automatisees</li>
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>SMS transactionnels (confirmations, rappels)</li>
-              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Segmentation intelligente par profil et comportement</li>
+              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Sequences automatisees (bienvenue, onboarding, reactivation)</li>
+              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>Newsletter automatique</li>
+              <li class="flex gap-2"><span class="text-teal-500">&#8226;</span>SMS transactionnels</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Module 9 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
         <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            </div>
+            <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
             <div><span class="font-semibold text-slate-900">Analytics & Dashboards Temps Reel</span><span class="block text-xs text-slate-400">Nouveau module</span></div>
           </div>
           <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1583,37 +1498,9 @@ tailwind.config = {
         <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-5 border-t border-slate-100 pt-4">
             <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Dashboard multi-sites en temps reel (occupation, revenus, leads)</li>
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Previsions d'occupation et de revenus par IA</li>
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Detection automatique des risques de churn</li>
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Rapports automatiques hebdomadaires et mensuels</li>
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>KPIs personnalisables par role (direction, community manager, commercial)</li>
-              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Alertes intelligentes (anomalies, opportunites, risques)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Module 10 -->
-      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden card-hover">
-        <button onclick="toggleModule(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-lg bg-red-100 text-red-600 flex items-center justify-center">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            </div>
-            <div><span class="font-semibold text-slate-900">Securite & Conformite</span><span class="block text-xs text-slate-400">Nouveau module</span></div>
-          </div>
-          <svg class="w-5 h-5 text-slate-400 module-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="module-body max-h-0 overflow-hidden transition-all duration-300">
-          <div class="px-6 pb-5 border-t border-slate-100 pt-4">
-            <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Gestion des acces et permissions par role</li>
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Authentification securisee (2FA, SSO)</li>
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Chiffrement des donnees au repos et en transit</li>
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Conformite Privacy Protection (loi israelienne + RGPD)</li>
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Sauvegardes automatiques et plan de reprise</li>
-              <li class="flex gap-2"><span class="text-red-500">&#8226;</span>Logs d'audit et tracabilite complete</li>
+              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Dashboard multi-sites en temps reel</li>
+              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Previsions IA et detection du churn</li>
+              <li class="flex gap-2"><span class="text-orange-500">&#8226;</span>Rapports automatiques et alertes intelligentes</li>
             </ul>
           </div>
         </div>
@@ -1633,7 +1520,6 @@ tailwind.config = {
 
     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 overflow-hidden">
       <div class="relative max-w-4xl mx-auto">
-        <!-- Centre -->
         <div class="flex justify-center mb-6">
           <div class="w-48 h-48 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-xl shadow-indigo-200 relative z-10">
             <div class="text-center text-white">
@@ -1643,138 +1529,431 @@ tailwind.config = {
             </div>
           </div>
         </div>
-        <!-- Flux -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8">
-          <div class="text-center p-3 rounded-xl bg-blue-50 border border-blue-100">
-            <div class="text-2xl mb-1">&#x1F465;</div>
-            <div class="text-xs font-semibold text-blue-800">CRM</div>
-            <div class="text-[10px] text-blue-500 mt-0.5">Leads & Clients</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-emerald-50 border border-emerald-100">
-            <div class="text-2xl mb-1">&#x1F3E2;</div>
-            <div class="text-xs font-semibold text-emerald-800">Espaces</div>
-            <div class="text-[10px] text-emerald-500 mt-0.5">4 sites</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-green-50 border border-green-100">
-            <div class="text-2xl mb-1">&#x1F4AC;</div>
-            <div class="text-xs font-semibold text-green-800">WhatsApp IA</div>
-            <div class="text-[10px] text-green-500 mt-0.5">24/7 multilingue</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-violet-50 border border-violet-100">
-            <div class="text-2xl mb-1">&#x1F310;</div>
-            <div class="text-xs font-semibold text-violet-800">Site Web</div>
-            <div class="text-[10px] text-violet-500 mt-0.5">SEO + Blog</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-amber-50 border border-amber-100">
-            <div class="text-2xl mb-1">&#x1F4B3;</div>
-            <div class="text-xs font-semibold text-amber-800">Facturation</div>
-            <div class="text-[10px] text-amber-500 mt-0.5">M2Ecom + Compta</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-rose-50 border border-rose-100">
-            <div class="text-2xl mb-1">&#x1F4F1;</div>
-            <div class="text-xs font-semibold text-rose-800">App Mobile</div>
-            <div class="text-[10px] text-rose-500 mt-0.5">iOS + Android</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-sky-50 border border-sky-100">
-            <div class="text-2xl mb-1">&#x1F4E3;</div>
-            <div class="text-xs font-semibold text-sky-800">Social Media</div>
-            <div class="text-[10px] text-sky-500 mt-0.5">Auto-publication</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-teal-50 border border-teal-100">
-            <div class="text-2xl mb-1">&#x2709;</div>
-            <div class="text-xs font-semibold text-teal-800">Email / SMS</div>
-            <div class="text-[10px] text-teal-500 mt-0.5">Sequences auto</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-orange-50 border border-orange-100">
-            <div class="text-2xl mb-1">&#x1F4CA;</div>
-            <div class="text-xs font-semibold text-orange-800">Analytics</div>
-            <div class="text-[10px] text-orange-500 mt-0.5">Temps reel</div>
-          </div>
-          <div class="text-center p-3 rounded-xl bg-red-50 border border-red-100">
-            <div class="text-2xl mb-1">&#x1F512;</div>
-            <div class="text-xs font-semibold text-red-800">Securite</div>
-            <div class="text-[10px] text-red-500 mt-0.5">Conformite</div>
-          </div>
-        </div>
-        <!-- Flux description -->
-        <div class="mt-8 bg-slate-50 rounded-xl p-5 border border-slate-200">
-          <h4 class="font-semibold text-sm text-slate-800 mb-3">Flux type d'un prospect</h4>
-          <div class="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-            <span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">WhatsApp / Chatbot</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-medium">Qualification IA</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-medium">CRM (lead cree)</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-medium">Visite reservee</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full font-medium">Contrat + Facture</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full font-medium">Portail membre actif</span>
-            <span class="text-slate-300">&#x2192;</span>
-            <span class="bg-teal-100 text-teal-700 px-2.5 py-1 rounded-full font-medium">Nurturing & retention</span>
-          </div>
+          <div class="text-center p-3 rounded-xl bg-blue-50 border border-blue-100"><div class="text-2xl mb-1">&#x1F465;</div><div class="text-xs font-semibold text-blue-800">CRM</div></div>
+          <div class="text-center p-3 rounded-xl bg-emerald-50 border border-emerald-100"><div class="text-2xl mb-1">&#x1F3E2;</div><div class="text-xs font-semibold text-emerald-800">Espaces</div></div>
+          <div class="text-center p-3 rounded-xl bg-green-50 border border-green-100"><div class="text-2xl mb-1">&#x1F4AC;</div><div class="text-xs font-semibold text-green-800">WhatsApp IA</div></div>
+          <div class="text-center p-3 rounded-xl bg-violet-50 border border-violet-100"><div class="text-2xl mb-1">&#x1F310;</div><div class="text-xs font-semibold text-violet-800">Site Web</div></div>
+          <div class="text-center p-3 rounded-xl bg-amber-50 border border-amber-100"><div class="text-2xl mb-1">&#x1F4B3;</div><div class="text-xs font-semibold text-amber-800">Facturation</div></div>
+          <div class="text-center p-3 rounded-xl bg-rose-50 border border-rose-100"><div class="text-2xl mb-1">&#x1F4F1;</div><div class="text-xs font-semibold text-rose-800">App Mobile</div></div>
+          <div class="text-center p-3 rounded-xl bg-sky-50 border border-sky-100"><div class="text-2xl mb-1">&#x1F4E3;</div><div class="text-xs font-semibold text-sky-800">Social Media</div></div>
+          <div class="text-center p-3 rounded-xl bg-teal-50 border border-teal-100"><div class="text-2xl mb-1">&#x2709;</div><div class="text-xs font-semibold text-teal-800">Email / SMS</div></div>
+          <div class="text-center p-3 rounded-xl bg-orange-50 border border-orange-100"><div class="text-2xl mb-1">&#x1F4CA;</div><div class="text-xs font-semibold text-orange-800">Analytics</div></div>
+          <div class="text-center p-3 rounded-xl bg-red-50 border border-red-100"><div class="text-2xl mb-1">&#x1F512;</div><div class="text-xs font-semibold text-red-800">Securite</div></div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- PARTIE 4 : AVANT / APRES -->
-  <section class="mb-8 anim-in anim-d4">
-    <div class="flex items-center gap-3 mb-6">
-      <div class="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center text-lg font-bold">4</div>
-      <div>
-        <h3 class="text-xl font-bold text-slate-900">Avant / Apres</h3>
-        <p class="text-sm text-slate-500">La transformation en un coup d'oeil</p>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- AVANT -->
-      <div class="bg-white rounded-2xl border-2 border-red-200 p-6 relative">
-        <div class="absolute -top-3 left-6 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">AVANT</div>
-        <ul class="space-y-3 mt-4 text-sm text-slate-600">
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>10+ outils differents a gerer et payer</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Donnees fragmentees entre Salesforce, OfficeRnD, Flexspace</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Aucune automatisation IA</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Chatbot basique en hebreu uniquement</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>WhatsApp = simple lien de contact</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Relances manuelles des prospects</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Pas de vision temps reel multi-sites</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Facturation deconnectee de la comptabilite</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Site WordPress avec contenu duplique</li>
-          <li class="flex gap-2"><span class="text-red-400">&#x2717;</span>Budget mensuel : <span id="beforeBudget" class="font-bold text-red-600">0 $</span></li>
-        </ul>
-      </div>
-      <!-- APRES -->
-      <div class="bg-white rounded-2xl border-2 border-green-200 p-6 relative">
-        <div class="absolute -top-3 left-6 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">APRES</div>
-        <ul class="space-y-3 mt-4 text-sm text-slate-600">
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span><span class="font-medium">1 seule plateforme</span> sur mesure</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Donnees <span class="font-medium">centralisees</span> et synchronisees</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span><span class="font-medium">IA native</span> dans chaque module</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Chatbot intelligent <span class="font-medium">multilingue</span> EN/HE/FR</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>WhatsApp IA avec <span class="font-medium">notes vocales</span></li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Relances <span class="font-medium">100% automatisees</span></li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Dashboard <span class="font-medium">temps reel</span> 4 sites</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Facturation connectee <span class="font-medium">M2Ecom + Compta</span></li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Site performant, <span class="font-medium">SEO-first</span>, zero contenu duplique</li>
-          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Budget mensuel : <span class="font-medium text-green-600">A definir ensemble</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
 </div>
 
-<!-- ==================== ONGLET 7 : PARTENARIAT ==================== -->
+<!-- ==================== ONGLET 6 : QUESTIONS / REPONSES ==================== -->
+<div id="tab-qna" class="tab-content">
+
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Questions / Reponses</h2>
+    <p class="text-slate-500">Toutes les questions abordees en reunion et les points restant a clarifier.</p>
+  </div>
+
+  <!-- Section 1 : Questions posees en reunion -->
+  <section class="mb-12 anim-in">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center text-lg font-bold">1</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Questions posees en reunion</h3>
+        <p class="text-sm text-slate-500">Reponses obtenues et validees</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"C'est quoi le cout d'implantation ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">~151 000 ILS pour tout redevelopper (3 mois). Detail par module dans l'onglet Proposition Financiere.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"C'est quoi le cout mensuel ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">~180 EUR de couts API, maintenance au temps passe (~2 500 ILS/mois au debut). Total estime ~3 500 ILS/mois.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"Le temps pour implanter ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">3-4 mois, migration des donnees incluse. Deploiement progressif par vagues.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"La solution est a qui ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">A vous si vous financez. Clause de clonage pour nous (droit de reutiliser l'architecture pour d'autres coworkings, sans vos donnees).</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"Qui gere la maintenance ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">Au temps passe, estime moins de 7h/mois une fois lance. Support reactif inclus.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"L'IA peut gerer l'hebreu ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">Oui, sans probleme. Les modeles actuels (Claude, GPT-4) gerent l'hebreu nativement, surtout pour les use cases simples (questions/reponses, qualification).</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+        <div class="flex gap-3 mb-3">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">Q</span>
+          <p class="text-sm font-semibold text-slate-800">"On peut garder notre agence social media ?"</p>
+        </div>
+        <div class="flex gap-3 ml-9">
+          <span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">R</span>
+          <p class="text-sm text-slate-600">Oui, absolument. On lui donne des outils encore plus puissants (contenu genere par IA, analytics centralises, calendrier editorial automatise).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 : Questions ouvertes -->
+  <section class="mb-8 anim-in anim-d1">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-bold">2</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Questions ouvertes</h3>
+        <p class="text-sm text-slate-500">A clarifier pour affiner la proposition</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-amber-200 p-6">
+      <div class="space-y-3">
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Combien de leads entrent dans le CRM par mois ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Combien de commerciaux font les visites ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Taux d'occupation actuel par site ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Priority : quelles fonctionnalites utilisez-vous exactement ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Rishon Letzion : projet futur ou erreur dans le formulaire ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Duree d'engagement typique des contrats ?</span>
+        </div>
+        <div class="flex gap-3 text-sm text-slate-700 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors">
+          <span class="text-amber-600 font-bold shrink-0">?</span>
+          <span>Nombre de membres actifs par site ?</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ONGLET 7 : PROPOSITION FINANCIERE ==================== -->
+<div id="tab-financier" class="tab-content">
+
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Proposition Financiere</h2>
+    <p class="text-slate-500">Chiffrage detaille de l'investissement initial, des couts recurrents et des modeles de financement.</p>
+  </div>
+
+  <!-- Section 1 : Investissement initial -->
+  <section class="mb-12 anim-in">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg font-bold">1</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Investissement initial</h3>
+        <p class="text-sm text-slate-500">Developpement de la plateforme complete</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left px-6 py-3.5 font-semibold text-slate-700">Module</th>
+              <th class="text-right px-6 py-3.5 font-semibold text-slate-700">Estimation</th>
+              <th class="text-right px-6 py-3.5 font-semibold text-slate-700">Duree</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">CRM & Pipeline integre</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">25 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">3 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Gestion espaces (remplace/connecte OfficeRnD)</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">30 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">4 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Site vitrine & Blog</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">15 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">2 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">WhatsApp IA & Chatbot</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">20 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">2 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Comptabilite automatisee (Priority/iCount)</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">20 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">3 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Portail membre & App</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">15 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">2 semaines</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Social Media Manager</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">10 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">1 semaine</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Email & SMS Marketing</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">8 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">1 semaine</td>
+            </tr>
+            <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4"><span class="font-medium text-slate-800">Analytics & Dashboards</span></td>
+              <td class="px-6 py-4 text-right font-semibold text-slate-800">8 000 ILS</td>
+              <td class="px-6 py-4 text-right text-slate-600">1 semaine</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="bg-slate-900 text-white">
+              <td class="px-6 py-4 font-bold text-lg">TOTAL</td>
+              <td class="px-6 py-4 text-right font-bold text-xl">~151 000 ILS</td>
+              <td class="px-6 py-4 text-right font-semibold">~3 mois</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 : Couts mensuels -->
+  <section class="mb-12 anim-in anim-d1">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg font-bold">2</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Couts mensuels (apres deploiement)</h3>
+        <p class="text-sm text-slate-500">Couts recurrents pour faire fonctionner la plateforme</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 border-b border-slate-200">
+            <th class="text-left px-6 py-3.5 font-semibold text-slate-700">Poste</th>
+            <th class="text-right px-6 py-3.5 font-semibold text-slate-700">Cout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-4 text-slate-800">API IA (Claude/GPT)</td>
+            <td class="px-6 py-4 text-right font-semibold text-slate-800">~180 EUR/mois</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-4 text-slate-800">Hebergement</td>
+            <td class="px-6 py-4 text-right font-semibold text-slate-800">~50 EUR/mois</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-4 text-slate-800">Maintenance</td>
+            <td class="px-6 py-4 text-right text-slate-600">Au temps passe (~2 500 ILS/mois estime)</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="bg-emerald-700 text-white">
+            <td class="px-6 py-4 font-bold text-lg">TOTAL estime</td>
+            <td class="px-6 py-4 text-right font-bold text-xl">~3 500 ILS/mois</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 3 : Comparaison -->
+  <section class="mb-12 anim-in anim-d2">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-bold">3</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Comparaison couts actuels vs futurs</h3>
+        <p class="text-sm text-slate-500">Economies potentielles apres migration</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 border-b border-slate-200">
+            <th class="text-left px-6 py-3.5 font-semibold text-slate-700">Poste</th>
+            <th class="text-center px-6 py-3.5 font-semibold text-red-600">Aujourd'hui</th>
+            <th class="text-center px-6 py-3.5 font-semibold text-green-600">Demain</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">Salesforce</td>
+            <td class="px-6 py-3.5 text-center text-red-600 font-medium">~2 500 ILS/mois</td>
+            <td class="px-6 py-3.5 text-center text-green-600 font-medium">0 (integre)</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">OfficeRnD</td>
+            <td class="px-6 py-3.5 text-center text-slate-500 italic">A confirmer</td>
+            <td class="px-6 py-3.5 text-center text-green-600 font-medium">0 (integre)</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">ChatBase</td>
+            <td class="px-6 py-3.5 text-center text-slate-500 italic">A confirmer</td>
+            <td class="px-6 py-3.5 text-center text-green-600 font-medium">0 (integre)</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">WordPress hosting</td>
+            <td class="px-6 py-3.5 text-center text-slate-500 italic">A confirmer</td>
+            <td class="px-6 py-3.5 text-center text-green-600 font-medium">0 (integre)</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">Agence social media</td>
+            <td class="px-6 py-3.5 text-center text-red-600 font-medium">~5 000 ILS/mois</td>
+            <td class="px-6 py-3.5 text-center text-amber-600 font-medium">Optimise</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">Stripe fees</td>
+            <td class="px-6 py-3.5 text-center text-slate-500 italic">X%</td>
+            <td class="px-6 py-3.5 text-center text-green-600 font-medium">Reduit</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-6 py-3.5 text-slate-800">Maintenance</td>
+            <td class="px-6 py-3.5 text-center text-red-600 font-medium">~2 500 ILS/mois</td>
+            <td class="px-6 py-3.5 text-center text-slate-600 font-medium">~2 500 ILS/mois</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="bg-green-50 border-t-2 border-green-300">
+            <td class="px-6 py-4 font-bold text-lg text-slate-900">Economie estimee</td>
+            <td class="px-6 py-4 text-center" colspan="2"><span class="text-green-700 font-bold text-lg">A calculer apres audit complet</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 4 : Modeles de financement -->
+  <section class="mb-8 anim-in anim-d3">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-violet-600 text-white flex items-center justify-center text-lg font-bold">4</div>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900">Modeles de financement</h3>
+        <p class="text-sm text-slate-500">Trois options flexibles selon vos preferences</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl border-2 border-slate-200 p-6 card-hover">
+        <div class="text-center mb-4">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-100 text-slate-700 font-bold text-lg mb-3">A</div>
+          <h4 class="text-lg font-bold text-slate-900">Paiement cash</h4>
+        </div>
+        <div class="text-center mb-4">
+          <p class="text-3xl font-bold text-slate-900">151 000</p>
+          <p class="text-sm text-slate-500">ILS</p>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Propriete totale du code</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Pas de cout recurrent lie au dev</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Liberte totale sur la solution</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-2xl border-2 border-indigo-200 p-6 card-hover relative">
+        <div class="text-center mb-4">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-700 font-bold text-lg mb-3">B</div>
+          <h4 class="text-lg font-bold text-slate-900">Mensualites</h4>
+        </div>
+        <div class="text-center mb-4">
+          <p class="text-3xl font-bold text-slate-900">A definir</p>
+          <p class="text-sm text-slate-500">ILS/mois sur 24-36 mois</p>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Tresorerie preservee</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Paiement etale</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Propriete a la fin</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-2xl border-2 border-violet-200 p-6 card-hover">
+        <div class="text-center mb-4">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-violet-100 text-violet-700 font-bold text-lg mb-3">C</div>
+          <h4 class="text-lg font-bold text-slate-900">Partenariat</h4>
+        </div>
+        <div class="text-center mb-4">
+          <p class="text-3xl font-bold text-slate-900">Co-dev</p>
+          <p class="text-sm text-slate-500">% sur reventes a d'autres coworkings</p>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Investissement partage</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Revenus partages</li>
+          <li class="flex gap-2"><span class="text-green-500">&#10003;</span>Partenariat long terme</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ONGLET 8 : PARTENARIAT ==================== -->
 <div id="tab-partenariat" class="tab-content">
 
   <!-- HERO VISION -->
   <div class="text-center mb-16 anim-in py-8">
-    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 border border-indigo-100">VISION</div>
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">Et si on allait<br><span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">plus loin ensemble ?</span></h2>
-    <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">Au-dela d'une relation client-prestataire, nous croyons en un partenariat strategique qui cree de la valeur pour Urban Place, pour ses membres, et pour l'ecosysteme tech israelien.</p>
+    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 border border-indigo-100">PARTENARIAT VALIDE</div>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">Allons<br><span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">plus loin ensemble</span></h2>
+    <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">Au-dela d'une relation client-prestataire, un partenariat strategique qui cree de la valeur pour Urban Place, pour ses membres, et pour l'ecosysteme tech israelien.</p>
   </div>
 
   <!-- LE CONCEPT -->
@@ -1794,8 +1973,6 @@ tailwind.config = {
   <section class="mb-16 anim-in anim-d2">
     <h3 class="text-xl font-bold text-slate-900 mb-8 text-center">Les trois piliers du partenariat</h3>
     <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- Pilier 1 -->
       <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4 font-bold">1</div>
         <h4 class="text-lg font-bold text-slate-900 mb-3">Pack Tech Pret a l'Emploi</h4>
@@ -1809,8 +1986,6 @@ tailwind.config = {
           <div class="flex items-center gap-2 text-sm bg-slate-50 rounded-lg px-3 py-2"><span class="w-2 h-2 rounded-full bg-sky-500"></span>Dashboard analytics business</div>
         </div>
       </div>
-
-      <!-- Pilier 2 -->
       <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl mb-4 font-bold">2</div>
         <h4 class="text-lg font-bold text-slate-900 mb-3">Lab IA & Accompagnement</h4>
@@ -1824,8 +1999,6 @@ tailwind.config = {
           <div class="flex items-center gap-2 text-sm bg-slate-50 rounded-lg px-3 py-2"><span class="w-2 h-2 rounded-full bg-green-500"></span>Office hours avec des experts tech</div>
         </div>
       </div>
-
-      <!-- Pilier 3 -->
       <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4 font-bold">3</div>
         <h4 class="text-lg font-bold text-slate-900 mb-3">Co-Branding & Croissance</h4>
@@ -1842,7 +2015,7 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- VALEUR POUR URBAN PLACE -->
+  <!-- VALEUR -->
   <section class="mb-16 anim-in anim-d3">
     <h3 class="text-xl font-bold text-slate-900 mb-8 text-center">Ce que ca change pour Urban Place</h3>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1869,7 +2042,7 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- CITATION VISION -->
+  <!-- CITATION -->
   <section class="mb-8 anim-in anim-d4">
     <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8 sm:p-12 max-w-3xl mx-auto text-center">
       <p class="text-xl sm:text-2xl text-slate-700 font-light leading-relaxed italic mb-6">"Urban Place ne serait plus seulement un endroit ou l'on travaille. Ce serait l'endroit ou l'on construit le futur de son entreprise."</p>
@@ -1879,77 +2052,160 @@ tailwind.config = {
 
 </div>
 
-<!-- ==================== ONGLET 5 : MERCI & PROCHAINES ETAPES ==================== -->
-<div id="tab-merci" class="tab-content">
+<!-- ==================== ONGLET 9 : PROCHAINES ETAPES & PLANNING ==================== -->
+<div id="tab-planning" class="tab-content">
 
-  <div class="max-w-3xl mx-auto text-center py-12">
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold text-slate-900 mb-2">Prochaines Etapes & Planning</h2>
+    <p class="text-slate-500">Timeline detaillee de l'audit a la mise en production.</p>
+  </div>
 
-    <div class="mb-12 anim-in">
-      <img src="https://urbanplace.me/wp-content/uploads/2021/06/urban-place-logo-noir.png" alt="Urban Place" class="h-12 mx-auto mb-8 opacity-80">
-      <h2 class="text-4xl font-bold text-slate-900 mb-4">Merci pour cette reunion</h2>
-      <p class="text-lg text-slate-500 leading-relaxed max-w-xl mx-auto">Nous allons maintenant analyser en detail vos reponses et besoins specifiques pour vous proposer un plan d'action sur mesure.</p>
-    </div>
+  <div class="max-w-4xl">
 
-    <div class="mb-12 anim-in anim-d1">
-      <h3 class="text-xl font-bold text-slate-800 mb-8">Prochaines etapes</h3>
-      <div class="space-y-4 text-left max-w-lg mx-auto">
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm shrink-0">1</div>
-          <div class="pt-1.5">
-            <p class="font-semibold text-slate-800">Analyse approfondie de vos reponses</p>
-            <p class="text-sm text-slate-500">Sous 48h</p>
-          </div>
+    <!-- Phase 0 -->
+    <section class="mb-8 anim-in">
+      <div class="flex gap-4">
+        <div class="shrink-0 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">0</div>
+          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
         </div>
-        <div class="w-px h-6 bg-slate-200 ml-5"></div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm shrink-0">2</div>
-          <div class="pt-1.5">
-            <p class="font-semibold text-slate-800">Proposition detaillee avec roadmap et chiffrage</p>
-            <p class="text-sm text-slate-500">Plan d'action personnalise</p>
+        <div class="flex-1 pb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold text-slate-900">Audit technique</h3>
+            <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">GRATUIT</span>
+            <span class="text-sm text-slate-400">Semaines 1-2</span>
           </div>
-        </div>
-        <div class="w-px h-6 bg-slate-200 ml-5"></div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm shrink-0">3</div>
-          <div class="pt-1.5">
-            <p class="font-semibold text-slate-800">Validation et ajustements ensemble</p>
-            <p class="text-sm text-slate-500">Co-construction de la solution</p>
-          </div>
-        </div>
-        <div class="w-px h-6 bg-slate-200 ml-5"></div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm shrink-0">4</div>
-          <div class="pt-1.5">
-            <p class="font-semibold text-slate-800">Demarrage des Quick Wins</p>
-            <p class="text-sm text-slate-500">Sous 2 semaines</p>
-          </div>
-        </div>
-        <div class="w-px h-6 bg-slate-200 ml-5"></div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm shrink-0">5</div>
-          <div class="pt-1.5">
-            <p class="font-semibold text-slate-800">Deploiement progressif des chantiers</p>
-            <p class="text-sm text-slate-500">Accompagnement continu</p>
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Obtenir acces Salesforce (lecture seule)</li>
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Obtenir acces OfficeRnD/FlexPlace (lecture seule)</li>
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Audit Priority API (modele de donnees)</li>
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Cartographie complete des flux de donnees</li>
+            </ul>
+            <div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-600">
+              <span class="font-semibold">Livrable :</span> Rapport d'audit + schema de donnees
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="mb-12 anim-in anim-d2">
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8 max-w-xl mx-auto">
-        <p class="text-slate-700 leading-relaxed italic">"Nous construisons des solutions sur mesure, sans limites techniques. Chaque outil, chaque automatisation, chaque integration est pensee pour votre contexte unique."</p>
+    <!-- Phase 1 -->
+    <section class="mb-8 anim-in anim-d1">
+      <div class="flex gap-4">
+        <div class="shrink-0 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">1</div>
+          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+        </div>
+        <div class="flex-1 pb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold text-slate-900">Contrat de mission</h3>
+            <span class="text-sm text-slate-400">Semaine 3</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Lettre d'engagement signee</li>
+              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Perimetre exact des modules</li>
+              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Planning detaille</li>
+              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Conditions financieres finales</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="mb-16 anim-in anim-d3">
-      <div class="bg-white rounded-2xl border border-slate-200 p-8 max-w-md mx-auto">
-        <h4 class="font-bold text-slate-800 mb-4">Contact</h4>
-        <p class="text-lg font-semibold text-slate-900">Jeremy BOUZNAH</p>
-        <p class="text-slate-600">Agence Orrtyl</p>
-        <a href="mailto:bouznahjeremy@gmail.com" class="text-indigo-600 hover:text-indigo-700 transition-colors text-sm font-medium mt-2 inline-block">bouznahjeremy@gmail.com</a>
+    <!-- Phase 2 -->
+    <section class="mb-8 anim-in anim-d2">
+      <div class="flex gap-4">
+        <div class="shrink-0 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-violet-600 text-white flex items-center justify-center font-bold text-sm">2</div>
+          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+        </div>
+        <div class="flex-1 pb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold text-slate-900">Developpement</h3>
+            <span class="text-sm text-slate-400">Mois 1 a 3</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-violet-50 rounded-xl p-4">
+                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 1</p>
+                <p class="text-sm text-slate-700">CRM, Gestion espaces, Migrations</p>
+              </div>
+              <div class="bg-violet-50 rounded-xl p-4">
+                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 2</p>
+                <p class="text-sm text-slate-700">IA (telephone, WhatsApp, chatbot)</p>
+              </div>
+              <div class="bg-violet-50 rounded-xl p-4">
+                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 3</p>
+                <p class="text-sm text-slate-700">Comptabilite, Site, Portail membre</p>
+              </div>
+              <div class="bg-violet-50 rounded-xl p-4">
+                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 4</p>
+                <p class="text-sm text-slate-700">Analytics, Marketing, Social Media</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
+    <!-- Phase 3 -->
+    <section class="mb-8 anim-in anim-d3">
+      <div class="flex gap-4">
+        <div class="shrink-0 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">3</div>
+          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+        </div>
+        <div class="flex-1 pb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold text-slate-900">Migration & Go-live</h3>
+            <span class="text-sm text-slate-400">Mois 4</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Migration donnees Salesforce vers nouveau CRM</li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Migration membres OfficeRnD</li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Formation equipes</li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Go-live progressif</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 4 -->
+    <section class="mb-8 anim-in anim-d4">
+      <div class="flex gap-4">
+        <div class="shrink-0 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">4</div>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold text-slate-900">Partenariat & Lab</h3>
+            <span class="text-sm text-slate-400">Mois 5+</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-green-200 p-6 card-hover">
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Lancement du Lab IA chez Urban Place</li>
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Premiers packs pour les membres</li>
+              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Co-marketing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Contact -->
+  <div class="mt-12 anim-in anim-d5">
+    <div class="bg-white rounded-2xl border border-slate-200 p-8 max-w-md mx-auto text-center">
+      <h4 class="font-bold text-slate-800 mb-4">Contact</h4>
+      <p class="text-lg font-semibold text-slate-900">Jeremy BOUZNAH</p>
+      <p class="text-slate-600">Agence Orrtyl</p>
+      <a href="mailto:bouznahjeremy@gmail.com" class="text-indigo-600 hover:text-indigo-700 transition-colors text-sm font-medium mt-2 inline-block">bouznahjeremy@gmail.com</a>
+    </div>
   </div>
 
 </div>
@@ -1959,7 +2215,7 @@ tailwind.config = {
 <!-- FOOTER -->
 <footer class="border-t border-slate-200 bg-white/80 backdrop-blur-sm py-4">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <p class="text-center text-xs text-slate-400">Presente par Orrtyl &mdash; Audit confidentiel &mdash; Mai 2026</p>
+    <p class="text-center text-xs text-slate-400">Presente par Orrtyl &mdash; Proposition confidentielle &mdash; Juin 2026</p>
   </div>
 </footer>
 
@@ -2001,7 +2257,7 @@ function toggleAccordion(trigger) {
 
 // Keyboard navigation for tabs
 document.addEventListener('keydown', (e) => {
-  const tabs = ['etat', 'decouverte', 'erreurs', 'ia', 'plateforme', 'partenariat', 'merci'];
+  const tabs = ['etat', 'parcours', 'audit', 'ia', 'plateforme', 'qna', 'financier', 'partenariat', 'planning'];
   const activeBtn = document.querySelector('.tab-btn.active');
   const currentIndex = tabs.indexOf(activeBtn?.dataset.tab);
 
