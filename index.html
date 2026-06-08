@@ -4435,152 +4435,280 @@ tailwind.config = {
 <!-- ==================== PLANNING ==================== -->
 <div id="tab-planning" class="tab-content">
 
-  <div class="mb-8">
-    <h2 class="text-3xl font-bold text-slate-900 mb-2">Prochaines Étapes &amp; Planning</h2>
-    <p class="text-slate-500">Timeline détaillée de l'audit à la mise en production.</p>
+  <!-- Header -->
+  <div class="mb-8 anim-in">
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <h2 class="text-3xl font-bold text-slate-900">Prochaines Étapes &amp; Planning</h2>
+      <span class="tag status-semi">Réunion du 7 juin 2026 — Alignement Orrtyl × Urban Place</span>
+    </div>
+    <p class="text-slate-500">Une approche en phases — Consulting d'abord, Développement ensuite.</p>
+  </div>
+
+  <!-- Principe Fondamental -->
+  <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 mb-8 anim-in anim-d1">
+    <div class="flex items-start gap-3">
+      <span class="text-2xl shrink-0">💡</span>
+      <div>
+        <p class="font-bold text-indigo-900 text-base mb-2">"Les outils doivent s'adapter à l'activité — pas l'activité aux outils."</p>
+        <p class="text-sm text-indigo-800 leading-relaxed">Avant de choisir une solution technique, nous définissons ensemble le schéma opérationnel cible. C'est seulement une fois ce schéma validé que nous arbitrons entre réparer l'existant, intégrer des outils ou redévelopper.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consulting vs Développement -->
+  <div class="grid sm:grid-cols-2 gap-4 mb-10 anim-in anim-d2">
+    <div class="bg-slate-800 rounded-2xl p-6 card-hover">
+      <div class="text-2xl mb-3">🔍</div>
+      <h3 class="font-bold text-white text-base mb-2">Phase Consulting</h3>
+      <p class="text-sm text-slate-300 leading-relaxed mb-4">Comprendre, cartographier, prioriser. Aucun développement n'est lancé sans que le schéma cible soit validé. C'est notre valeur ajoutée principale : nous savons ce qui est réalisable techniquement, donc nous ne promettons pas l'irréalisable.</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag" style="background:#334155;color:#94a3b8;">Audit des frictions</span>
+        <span class="tag" style="background:#334155;color:#94a3b8;">Cahier des charges</span>
+        <span class="tag" style="background:#334155;color:#94a3b8;">Schéma cible</span>
+        <span class="tag" style="background:#334155;color:#94a3b8;">Priorités</span>
+      </div>
+    </div>
+    <div class="bg-brand-600 rounded-2xl p-6 card-hover" style="background:#16a34a;">
+      <div class="text-2xl mb-3">⚙️</div>
+      <h3 class="font-bold text-white text-base mb-2">Phase Développement</h3>
+      <p class="text-sm text-green-100 leading-relaxed mb-4">Construire uniquement ce qui a été validé. Chaque module est développé indépendamment, livré, testé, puis on enchaîne. Minimum 6 à 8 semaines par module. Jamais de tout livrer en même temps.</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag" style="background:rgba(0,0,0,0.2);color:#bbf7d0;">Modules indépendants</span>
+        <span class="tag" style="background:rgba(0,0,0,0.2);color:#bbf7d0;">6-8 sem/module</span>
+        <span class="tag" style="background:rgba(0,0,0,0.2);color:#bbf7d0;">Tests &amp; validation</span>
+        <span class="tag" style="background:rgba(0,0,0,0.2);color:#bbf7d0;">Livraisons progressives</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Les 5 Phases -->
+  <div class="mb-4 anim-in anim-d2">
+    <h3 class="text-xl font-bold text-slate-900 mb-6">Les 5 Phases</h3>
   </div>
 
   <div class="max-w-4xl">
 
     <!-- Phase 0 -->
-    <section class="mb-8 anim-in">
-      <div class="flex gap-4">
-        <div class="shrink-0 flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">0</div>
-          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+    <div class="funnel-step flex gap-4 mb-4 anim-in">
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">0</div>
+      </div>
+      <div class="flex-1 pb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <h4 class="text-lg font-bold text-slate-900">Demande Initiale</h4>
+          <span class="text-slate-400 text-sm">✦ Point de Départ</span>
+          <span class="tag status-auto">IMMÉDIAT</span>
         </div>
-        <div class="flex-1 pb-8">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="text-xl font-bold text-slate-900">Audit technique</h3>
-            <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">GRATUIT</span>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Obtenir accès Salesforce (lecture seule)</li>
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Obtenir accès OfficeRnD/FlexPlace (lecture seule)</li>
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Audit Priority API (modèle de données)</li>
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Cartographie complète des flux de données</li>
-            </ul>
-            <div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-600">
-              <span class="font-semibold">Livrable :</span> Rapport d'audit + schéma de données
-            </div>
+        <div class="flex flex-wrap gap-3 text-xs text-slate-500 mb-4">
+          <span>Durée : 1-2 semaines</span>
+          <span>·</span>
+          <span>Dépendances : aucune</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">Romain et Diego sont venus pour une raison précise : soulager leurs commerciaux. IA téléphonique, WhatsApp IA, préparation automatique des rendez-vous. On ne l'oublie pas — c'est notre contrat de confiance avec eux.</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-green-500 shrink-0 mt-0.5">&#10003;</span>IA téléphonique / Agent vocal entrant</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-green-500 shrink-0 mt-0.5">&#10003;</span>WhatsApp IA multilingue (HE/EN/FR/RU)</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-green-500 shrink-0 mt-0.5">&#10003;</span>Préparation automatique des rendez-vous</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-green-500 shrink-0 mt-0.5">&#10003;</span>Chatbot site multilingue</li>
+          </ul>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+            Ce sont des "Doliprane" efficaces — ils soulagent immédiatement. Mais la vraie guérison passe par la phase suivante.
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Phase 1 -->
-    <section class="mb-8 anim-in anim-d1">
-      <div class="flex gap-4">
-        <div class="shrink-0 flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">1</div>
-          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+    <div class="funnel-step flex gap-4 mb-4 anim-in anim-d1">
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-sm">1</div>
+      </div>
+      <div class="flex-1 pb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <h4 class="text-lg font-bold text-slate-900">Audit des Frictions</h4>
+          <span class="text-slate-400 text-sm">🔍 Consulting</span>
+          <span class="tag status-auto">SEMAINES 1-4 · En parallèle de la Phase 0</span>
         </div>
-        <div class="flex-1 pb-8">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="text-xl font-bold text-slate-900">Contrat de mission</h3>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Lettre d'engagement signee</li>
-              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Périmètre exact des modules</li>
-              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Planning détaillé</li>
-              <li class="flex gap-2"><span class="text-indigo-500 shrink-0">&#10003;</span>Conditions financières finales</li>
-            </ul>
+        <div class="flex flex-wrap gap-3 text-xs text-slate-500 mb-4">
+          <span>Durée : 3-4 semaines</span>
+          <span>·</span>
+          <span>Peut démarrer immédiatement</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">On cartographie tous les points de friction : logiciels, commerciaux, parcours client, comptabilité. On n'invente pas de solutions avant d'avoir compris les vrais problèmes.</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Audit frictions commerciaux (pourquoi ils sortent des clous ? → problème management ou logiciel ?)</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Audit parcours prospect → client → facturation → comptabilité</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Audit stack technique (Salesforce, Priority, OfficeRnD, WordPress)</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Identification des redondances entre outils</li>
+          </ul>
+          <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-600">
+            <span class="font-semibold">Livrable :</span> Cartographie complète des frictions priorisées
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Phase 2 -->
-    <section class="mb-8 anim-in anim-d2">
-      <div class="flex gap-4">
-        <div class="shrink-0 flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-violet-600 text-white flex items-center justify-center font-bold text-sm">2</div>
-          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+    <div class="funnel-step flex gap-4 mb-4 anim-in anim-d2">
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">2</div>
+      </div>
+      <div class="flex-1 pb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <h4 class="text-lg font-bold text-slate-900">Schéma Cible</h4>
+          <span class="text-slate-400 text-sm">🎯 Consulting</span>
+          <span class="tag status-semi">SEMAINES 4-6</span>
         </div>
-        <div class="flex-1 pb-8">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="text-xl font-bold text-slate-900">Développement</h3>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="bg-violet-50 rounded-xl p-4">
-                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 1</p>
-                <p class="text-sm text-slate-700">CRM, Gestion espaces, Migrations</p>
-              </div>
-              <div class="bg-violet-50 rounded-xl p-4">
-                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 2</p>
-                <p class="text-sm text-slate-700">IA (telephone, WhatsApp, chatbot)</p>
-              </div>
-              <div class="bg-violet-50 rounded-xl p-4">
-                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 3</p>
-                <p class="text-sm text-slate-700">Comptabilité, Site, Portail membre</p>
-              </div>
-              <div class="bg-violet-50 rounded-xl p-4">
-                <p class="text-xs text-violet-600 font-semibold uppercase tracking-wide mb-2">Wave 4</p>
-                <p class="text-sm text-slate-700">Analytics, Marketing, Social Media</p>
-              </div>
-            </div>
+        <div class="flex flex-wrap gap-3 text-xs text-slate-500 mb-4">
+          <span>Durée : 2 semaines</span>
+          <span>·</span>
+          <span>Requiert Phase 1 terminée</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">On définit le parcours idéal. Pas une liste de fonctionnalités — un schéma opérationnel : qui fait quoi, quand, avec quel outil, dans quel ordre.</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Définition du parcours idéal prospect → client</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Définition du parcours facturation → comptabilité (avec conformité Reshut HaMisim)</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Définition des règles commerciales (les fameux cas de négociation : 1 mois gratuit, remise X%, etc.)</li>
+          </ul>
+          <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-600">
+            <span class="font-semibold">Livrable :</span> Cahier des charges fonctionnel complet + maquettes schémas
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Phase 3 -->
-    <section class="mb-8 anim-in anim-d3">
-      <div class="flex gap-4">
-        <div class="shrink-0 flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">3</div>
-          <div class="w-0.5 flex-1 bg-slate-200 mt-2"></div>
+    <div class="funnel-step flex gap-4 mb-4 anim-in anim-d3">
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">3</div>
+      </div>
+      <div class="flex-1 pb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <h4 class="text-lg font-bold text-slate-900">Arbitrage Solution</h4>
+          <span class="text-slate-400 text-sm">⚖️ Consulting + Décision</span>
+          <span class="tag status-semi">SEMAINE 6-7</span>
         </div>
-        <div class="flex-1 pb-8">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="text-xl font-bold text-slate-900">Migration & Go-live</h3>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Migration données Salesforce vers nouveau CRM</li>
-              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Migration membres OfficeRnD</li>
-              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Formation équipes</li>
-              <li class="flex gap-2"><span class="text-amber-500 shrink-0">&#10003;</span>Go-live progressif</li>
-            </ul>
+        <div class="flex flex-wrap gap-3 text-xs text-slate-500 mb-4">
+          <span>Durée : 1 semaine</span>
+          <span>·</span>
+          <span>Requiert Phase 2 validée</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">Une fois le schéma cible posé, on arbitre : Option A (réparer l'existant), Option B (redévelopper), Option C (écosystème Salesforce). Ce n'est qu'à ce moment qu'on peut donner un devis précis.</p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Chiffrage Option A vs B vs C</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Présentation des risques et avantages de chaque option</li>
+            <li class="flex gap-2 text-sm text-slate-700"><span class="text-slate-400 shrink-0 mt-0.5">→</span>Décision client</li>
+          </ul>
+          <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-600">
+            <span class="font-semibold">Livrable :</span> Devis détaillé + planning de développement
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Phase 4 -->
-    <section class="mb-8 anim-in anim-d4">
-      <div class="flex gap-4">
-        <div class="shrink-0 flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">4</div>
+    <div class="funnel-step flex gap-4 mb-4 anim-in anim-d4">
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">4</div>
+      </div>
+      <div class="flex-1 pb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <h4 class="text-lg font-bold text-slate-900">Développement par Modules</h4>
+          <span class="text-slate-400 text-sm">⚙️ Développement</span>
+          <span class="tag status-manual">À PARTIR DE LA SEMAINE 7-8 · 6-8 semaines par module</span>
         </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-3">
-            <h3 class="text-xl font-bold text-slate-900">Partenariat & Lab</h3>
+        <div class="flex flex-wrap gap-3 text-xs text-slate-500 mb-4">
+          <span>Durée : Variable selon modules retenus</span>
+          <span>·</span>
+          <span>Requiert Phase 3 — décision prise</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-hover">
+          <p class="text-sm text-slate-600 leading-relaxed mb-5">On ne lance pas tout en même temps. Chaque module est un contrat indépendant : livré, testé, validé, puis on enchaîne.</p>
+
+          <!-- Tableau modules -->
+          <div class="overflow-x-auto mb-5">
+            <table class="w-full text-xs text-left">
+              <thead>
+                <tr class="border-b border-slate-200">
+                  <th class="pb-2 pr-4 font-semibold text-slate-500 uppercase tracking-wide">Module</th>
+                  <th class="pb-2 pr-4 font-semibold text-slate-500 uppercase tracking-wide">Durée estimée</th>
+                  <th class="pb-2 pr-4 font-semibold text-slate-500 uppercase tracking-wide">Dépend de</th>
+                  <th class="pb-2 font-semibold text-slate-500 uppercase tracking-wide">Parallélisable</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">Chatbot multilingue</td>
+                  <td class="py-2 pr-4 text-slate-600">2-3 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">Phase 0</td>
+                  <td class="py-2 text-green-600 font-semibold">✅ Oui</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">CRM / Gestion commerciale</td>
+                  <td class="py-2 pr-4 text-slate-600">6-8 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">Phase 3</td>
+                  <td class="py-2 text-slate-400">Non</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">Gestion des offres &amp; contrats</td>
+                  <td class="py-2 pr-4 text-slate-600">4-6 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">CRM</td>
+                  <td class="py-2 text-slate-400">Non</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">Facturation &amp; comptabilité</td>
+                  <td class="py-2 pr-4 text-slate-600">4-6 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">Contrats</td>
+                  <td class="py-2 text-slate-400">Non</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">Portail membre</td>
+                  <td class="py-2 pr-4 text-slate-600">3-4 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">CRM</td>
+                  <td class="py-2 text-green-600 font-semibold">✅ Partiel</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">Site web refonte</td>
+                  <td class="py-2 pr-4 text-slate-600">4-6 semaines</td>
+                  <td class="py-2 pr-4 text-slate-600">Phase 3</td>
+                  <td class="py-2 text-green-600 font-semibold">✅ Oui</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">SEO / AEO</td>
+                  <td class="py-2 pr-4 text-slate-600">12 mois</td>
+                  <td class="py-2 pr-4 text-slate-600">Site refonte</td>
+                  <td class="py-2 text-green-600 font-semibold">✅ Oui</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="py-2 pr-4 font-medium text-slate-700">App mobile</td>
+                  <td class="py-2 pr-4 text-slate-600">+4-5 sem post-dev</td>
+                  <td class="py-2 pr-4 text-slate-600">Portail</td>
+                  <td class="py-2 text-slate-400">Non</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="bg-white rounded-2xl border border-green-200 p-6 card-hover">
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Lancement du Lab IA chez Urban Place</li>
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Premiers packs pour les membres</li>
-              <li class="flex gap-2"><span class="text-green-500 shrink-0">&#10003;</span>Co-marketing</li>
-            </ul>
+
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800 mb-3">
+            <span class="font-semibold">Note SEO :</span> Le SEO est une stratégie sur 12 mois minimum. Aucun résultat visible avant 3 à 6 mois. C'est une promesse de moyens, jamais de résultats — la concurrence investit aussi. On l'intègre uniquement quand le site est stable et optimisé.
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+            <span class="font-semibold">Note app mobile :</span> Une app iOS nécessite minimum 1 mois de validation Apple après développement terminé. Android : 3 semaines minimum. Ces délais sont incompressibles — à intégrer dès le planning.
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
   </div>
 
-  <!-- Contact -->
-  <div class="mt-12 anim-in anim-d5">
-    <div class="bg-white rounded-2xl border border-slate-200 p-8 max-w-md mx-auto text-center">
-      <h4 class="font-bold text-slate-800 mb-4">Contact</h4>
-      <p class="text-lg font-semibold text-slate-900">Jeremy BOUZNAH</p>
-      <p class="text-slate-600">Agence Orrtyl</p>
-      <a href="mailto:bouznahjeremy@gmail.com" class="text-indigo-600 hover:text-indigo-700 transition-colors text-sm font-medium mt-2 inline-block">bouznahjeremy@gmail.com</a>
-    </div>
+  <!-- Ce que nous ne faisons pas -->
+  <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 mt-4 mb-8 anim-in anim-d5">
+    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Ce que nous ne faisons pas</p>
+    <p class="text-sm text-slate-500 leading-relaxed">Orrtyl est une agence de conseil et de développement. Nous ne sommes pas une agence SEO/AEO, ni une agence marketing, ni un cabinet comptable. Sur les sujets hors de notre cœur de métier, nous vous orientons vers les bons spécialistes plutôt que de vous promettre ce que nous ne maîtrisons pas à 100%.</p>
   </div>
 
 </div>
